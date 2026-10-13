@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#481725"/>
+      <stop offset="50%" stop-color="#72283B"/>
+      <stop offset="100%" stop-color="#E9DDCB"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <rect x="110" y="110" width="980" height="1380" fill="rgba(245,238,228,0.08)" stroke="rgba(245,238,228,0.22)"/>
+  <circle cx="920" cy="300" r="160" fill="rgba(245,238,228,0.10)"/>
+  <rect x="180" y="960" width="840" height="260" rx="12" fill="rgba(48,37,33,0.22)"/>
+  <text x="600" y="1080" text-anchor="middle" fill="#F5EEE4" font-family="Georgia, serif" font-size="96" letter-spacing="8">SAWALA RASA</text>
+  <text x="600" y="1170" text-anchor="middle" fill="#E9DDCB" font-family="Arial, sans-serif" font-size="34" letter-spacing="10">PHOTO 4</text>
+</svg>

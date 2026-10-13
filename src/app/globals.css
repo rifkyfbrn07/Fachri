@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body: "Manrope", Inter, system-ui, sans-serif;
+  --font-hand: "Caveat", "Segoe Script", cursive;
+  --font-sundanese: "Noto Sans Sundanese", "Noto Sans", sans-serif;
+
+  --maroon: #481725;
+  --wine: #72283b;
+  --rose: #a66b76;
+  --ivory: #f5eee4;
+  --parchment: #e9ddcb;
+  --gold: #b69a70;
+  --ink: #302521;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ivory text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgba(114, 40, 59, 0.85);
+    color: #f5eee4;
+  }
+
+  /* Thin, quiet scrollbar to match the editorial tone */
+  @media (pointer: fine) {
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f5eee4;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #72283b;
+      border: 3px solid #f5eee4;
+      border-radius: 999px;
+    }
+  }
+}
+
+@layer components {
+  /* Editorial label — small caps with wide tracking */
+  .label-eyebrow {
+    @apply font-sans text-[0.68rem] uppercase tracking-widest2 font-semibold;
+  }
+
+  /* Film-grain texture (white noise) for dark surfaces */
+  .grain-light {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+  }
+
+  /* Film-grain texture for light surfaces */
+  .grain-dark {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    mix-blend-mode: multiply;
+  }
+
+  /* Soft radial vignette for cinematic dark sections */
+  .vignette {
+    background:
+      radial-gradient(120% 90% at 50% 0%, rgba(245, 238, 228, 0.05) 0%, rgba(0, 0, 0, 0) 42%),
+      radial-gradient(130% 100% at 50% 115%, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0) 55%);
+  }
+
+  /* Oversized decorative serif number */
+  .numeral-outline {
+    -webkit-text-stroke: 1px rgba(182, 154, 112, 0.35);
+    color: transparent;
+  }
+
+  /* Fine hairline divider */
+  .hairline {
+    @apply h-px w-full bg-ink/15;
+  }
+
+  /* Text used as a quiet water mark */
+  .watermark {
+    color: rgba(48, 37, 33, 0.045);
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+/* Aesthetic / motion helpers ------------------------------------------------ */
+
+/* Soft gold underline behind emphasised poem lines (animated via background-size) */
+.poem-em {
+  background-image: linear-gradient(transparent 62%, rgba(182, 154, 112, 0.42) 62%);
+  background-repeat: no-repeat;
+  background-position: left 0 62%;
+  padding: 0 0.1em;
+}
+
+/* Hide content flashes before JS hydrates */
+html.js-hydrated body {
+  opacity: 1;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
