@@ -62,6 +62,15 @@ export default function ClosingSection() {
       <div className="absolute inset-0 vignette" />
 
       <div className="relative mx-auto max-w-5xl px-6 text-center lg:px-10">
+        <div className="mb-12 overflow-hidden rounded-[2rem] border border-ivory/15 bg-ivory/5 shadow-[0_30px_100px_rgba(0,0,0,0.18)]">
+          <img
+            src="/images/11.jpeg"
+            alt="A final photograph from our story"
+            className="h-[320px] w-full object-cover object-center sm:h-[440px]"
+            loading="lazy"
+          />
+        </div>
+
         <div className="closing-copy">
           <p className="label-eyebrow text-gold">{siteConfig.closing.signature}</p>
           <h2 className="mt-6 font-serif text-4xl leading-tight tracking-tight sm:text-5xl lg:text-7xl">

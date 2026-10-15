@@ -153,6 +153,25 @@ export default function PoetrySection() {
         </div>
       </div>
 
+      <div className="relative mx-auto mt-16 w-full max-w-6xl px-6 lg:px-10">
+        <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+          <div className="space-y-4 text-left">
+            <p className="label-eyebrow text-wine">For Sifa Nuraliza</p>
+            <p className="font-serif text-2xl italic text-ink/75 sm:text-3xl">
+              Some feelings are easier to write than to say.
+            </p>
+          </div>
+          <div className="overflow-hidden rounded-[1.75rem] border border-ink/10 bg-ink/5 shadow-[0_25px_80px_rgba(72,23,37,0.12)]">
+            <img
+              src="/images/11.jpeg"
+              alt="A quiet portrait from our story"
+              className="h-[220px] w-full object-cover sm:h-[280px]"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+
       {/* poem reader */}
       <div className="relative mx-auto mt-20 grid w-full max-w-7xl gap-10 px-6 lg:grid-cols-12 lg:px-10">
         {/* rail */}

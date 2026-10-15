@@ -8,14 +8,17 @@ import PhotoLightbox from "./PhotoLightbox";
 
 /** Editorial 12-column placements — deliberate, never an identical card grid. */
 const PLACEMENT = [
-  "lg:col-span-8 aspect-[4/3] lg:aspect-[16/10]",
-  "lg:col-span-4 aspect-[4/3] lg:aspect-[16/10]",
+  "lg:col-span-7 aspect-[4/3] lg:aspect-[16/10]",
+  "lg:col-span-5 aspect-[4/3] lg:aspect-[16/10]",
+  "lg:col-span-3 aspect-[4/3] lg:aspect-square",
   "lg:col-span-3 aspect-[4/3] lg:aspect-square",
   "lg:col-span-6 aspect-[4/3]",
   "lg:col-span-3 aspect-[4/3] lg:aspect-square",
-  "lg:col-span-7 aspect-[4/3]",
-  "lg:col-span-5 aspect-[4/3]",
-  "lg:col-span-6 lg:col-start-4 aspect-[4/3]",
+  "lg:col-span-4 aspect-[4/3] lg:aspect-[5/4]",
+  "lg:col-span-5 aspect-[4/3] lg:aspect-[5/4]",
+  "lg:col-span-3 aspect-[4/3] lg:aspect-square",
+  "lg:col-span-4 aspect-[4/3] lg:aspect-[5/4]",
+  "lg:col-span-8 aspect-[4/3] lg:aspect-[16/10]",
 ];
 
 /**
@@ -109,7 +112,7 @@ export default function MemoryGallery() {
             aria-label={`Open photo: ${photo.caption}`}
             className={`gallery-cell group relative overflow-hidden text-left focus-visible:outline-2 focus-visible:outline-wine ${
               i === 0 ? "gallery-feature sm:col-span-2" : "sm:col-span-1"
-            } ${PLACEMENT[i]}`}
+            } ${PLACEMENT[i] ?? "lg:col-span-6 aspect-[4/3]"}`}
           >
             <div className="absolute inset-0 overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}

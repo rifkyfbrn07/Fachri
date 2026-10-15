@@ -115,19 +115,17 @@ export default function HeroSection({ started }: { started: boolean }) {
         <div className="hero-copy order-2 lg:order-1 lg:col-span-7">
           <div className="hero-eyebrow mb-8 flex items-center gap-4">
             <span className="h-px w-12 bg-gold/60" aria-hidden="true" />
-            <span className="label-eyebrow text-gold">{siteConfig.hero.eyebrow}</span>
+            <span className="label-eyebrow text-gold">{siteConfig.name}</span>
           </div>
-          <h1 className="font-serif text-[clamp(2.6rem,7vw,5.6rem)] leading-[1.05] tracking-tight">
+          <h1 className="font-serif text-[clamp(2.4rem,5.7vw,6rem)] leading-[0.9] tracking-[0.18em] text-ivory">
             <span className="block overflow-hidden">
-              <span className="hero-line-inner block">Somehow, Every Road</span>
-            </span>
-            <span className="block overflow-hidden">
-              <span className="hero-line-inner block">
-                Led Me to <span className="italic text-rose">You.</span>
-              </span>
+              <span className="hero-line-inner block">{siteConfig.hero.eyebrow}</span>
             </span>
           </h1>
-          <p className="hero-sub mt-8 max-w-md font-sans text-base leading-relaxed text-ivory/75 sm:text-lg">
+          <p className="hero-sub mt-8 max-w-xl font-serif text-[clamp(1.5rem,2.4vw,3rem)] italic leading-tight text-ivory/90">
+            {siteConfig.hero.headline}
+          </p>
+          <p className="hero-sub mt-4 max-w-md font-sans text-base uppercase tracking-[0.28em] text-ivory/70 sm:text-lg">
             {siteConfig.hero.supporting}
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">

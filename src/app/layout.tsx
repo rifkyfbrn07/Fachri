@@ -2,11 +2,12 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Sawala Rasa — Two Hearts, One Unwritten Story",
+  title: "Sawala Rasa — A letter I never knew how to say.",
   description:
-    "A quiet love story told through letters, photographs, and the moments between. Sawala Rasa — two hearts, one unwritten story.",
+    "A deeply personal romantic digital letter for Sifa Nuraliza, written with warmth, tenderness, and cinematic detail.",
   keywords: [
     "Sawala Rasa",
+    "Sifa Nuraliza",
     "love letter",
     "romantic website",
     "Sundanese",
@@ -14,9 +15,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Sawala Rasa" }],
   openGraph: {
-    title: "Sawala Rasa — Two Hearts, One Unwritten Story",
+    title: "Sawala Rasa — A letter I never knew how to say.",
     description:
-      "A quiet love story told through letters, photographs, and the moments between.",
+      "A quiet, personal love story preserved in letters, photographs, and tender memories.",
     type: "website",
     locale: "en_US",
   },
