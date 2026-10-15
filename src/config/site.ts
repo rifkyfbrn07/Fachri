@@ -191,7 +191,7 @@ export const siteConfig = {
   },
 
   music: {
-    src: "/audio/music.wav",
+    src: "/audio/lagu.mp3",
     label: "Music",
     hint: "A calm melody for the quiet moments.",
   },
