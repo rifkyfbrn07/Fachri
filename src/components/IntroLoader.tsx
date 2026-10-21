@@ -19,6 +19,7 @@ type Props = {
 export default function IntroLoader({ onFinished }: Props) {
   const scopeRef = useRef<HTMLDivElement>(null);
   const [hidden, setHidden] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const scope = scopeRef.current;
@@ -26,22 +27,14 @@ export default function IntroLoader({ onFinished }: Props) {
 
     document.body.style.overflow = "hidden";
 
-    let finished = false;
-    const finish = () => {
-      if (finished) return;
-      finished = true;
-      onFinished();
-    };
-
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         defaults: { ease: "power3.out" },
-        onComplete: finish,
+        onComplete: () => setReady(true),
       });
 
       if (prefersReducedMotion()) {
-        tl.set(scope, { yPercent: -100 });
-        tl.call(finish, undefined, 0.1);
+        tl.call(() => setReady(true), undefined, 0.1);
         return;
       }
 
@@ -62,19 +55,7 @@ export default function IntroLoader({ onFinished }: Props) {
           { scaleX: 1, duration: 1.5, ease: "power2.inOut" },
           0.2
         )
-        .to(
-          ".intro-script, .intro-word, .intro-progress, .intro-skip",
-          { opacity: 0, y: -14, duration: 0.45, ease: "power2.in" },
-          "+=0.35"
-        )
-        .to(
-          scope,
-          { yPercent: -100, duration: 1.05, ease: "power4.inOut" },
-          "-=0.1"
-        )
-        .add(() => {
-          setHidden(true);
-        });
+        .call(() => setReady(true));
     }, scope);
 
     return () => {
@@ -94,13 +75,29 @@ export default function IntroLoader({ onFinished }: Props) {
     }
   };
 
+  const handleEnter = () => {
+    // Start from the trusted click before launching any transition work.
+    window.dispatchEvent(new Event("sr:music-start"));
+    if (scopeRef.current) {
+      gsap.to(scopeRef.current, {
+        yPercent: -100,
+        duration: prefersReducedMotion() ? 0 : 1.05,
+        ease: "power4.inOut",
+        onComplete: () => {
+          setHidden(true);
+          onFinished();
+        },
+      });
+    }
+  };
+
   if (hidden) return null;
 
   return (
     <div
       ref={scopeRef}
       className="intro-curtain fixed inset-0 z-[100] flex items-center justify-center bg-maroon overflow-hidden"
-      aria-hidden="true"
+      aria-label="Sawala Rasa opening screen"
     >
       <div className="absolute inset-0 grain-light opacity-[0.08]" />
       <div className="absolute inset-0 vignette" />
@@ -146,6 +143,15 @@ export default function IntroLoader({ onFinished }: Props) {
       >
         Skip
       </button>
+      {ready && (
+        <button
+          type="button"
+          onClick={handleEnter}
+          className="intro-entry absolute bottom-8 left-1/2 -translate-x-1/2 rounded-full border border-gold/60 bg-maroon/70 px-6 py-3 label-eyebrow text-ivory transition-colors hover:border-gold hover:bg-wine focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+        >
+          Enter Our Little World
+        </button>
+      )}
     </div>
   );
 }

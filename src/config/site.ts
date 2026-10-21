@@ -8,7 +8,7 @@
  *  - Replace `hero.photo` and each gallery `src` with real photographs
  *    (drop files into /public/images and update the path).
  *  - Replace placeholder names / dates / captions with real details.
- *  - Add your own song at /public/audio/music.mp3 (or change `music.src`).
+ *  - Replace the background track in /public/audio and update `music.src`.
  * -----------------------------------------------------------------------------
  */
 
@@ -191,12 +191,12 @@ export const siteConfig = {
   },
 
   music: {
-    src: "/audio/lagu.mp3",
+    // Replace this single path to change the licensed instrumental soundtrack.
+    src: "/audio/background-music.mp3",
     label: "Music",
     hint: "A calm melody for the quiet moments.",
+    unavailableHint: "Music is unavailable right now. Add the soundtrack to /public/audio/background-music.mp3.",
   },
 };
 
 export type SiteConfig = typeof siteConfig;
-
-
